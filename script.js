@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         easing: 'ease-out-cubic',
     });
 
-    // 2. Sticky Navbar
+    // 2. Sticky Navbar & Mobile Menu
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
@@ -15,6 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             navbar.classList.remove("scrolled");
         }
+    });
+
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+    
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+        });
     });
 
     // 3. Database & Search Logic
@@ -50,15 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
         searchResults.classList.remove("hidden");
     }
 
-    searchInput.addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase();
+    function handleSearch() {
+        const query = searchInput.value.toLowerCase();
         if (query.trim() === "") {
             searchResults.classList.add("hidden");
             return;
         }
         const filtered = sortedDinosaurs.filter(d => d.name.toLowerCase().includes(query));
         renderSearchResults(filtered);
-    });
+    }
+
+    searchInput.addEventListener("input", handleSearch);
+    searchInput.addEventListener("focus", handleSearch);
+
 
     // Hide search results when clicking outside
     document.addEventListener("click", (e) => {

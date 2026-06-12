@@ -22,11 +22,11 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBase: '#121212',
+                        darkBase: '#0F0F0F',
                         darkSurface: '#1E1E1E',
                         tealAccent: '#00E5FF',
                         amberAccent: '#FFAB00',
-                        glassBg: 'rgba(30, 30, 30, 0.6)',
+                        glassBg: 'rgba(15, 15, 15, 0.6)',
                         glassBorder: 'rgba(255, 255, 255, 0.1)'
                     },
                     fontFamily: {
@@ -52,103 +52,89 @@
 
     <!-- Sticky Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-glassBorder transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- SVG Logo Placeholder -->
+                <!-- SVG Logo -->
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M2 17L12 22L22 17" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M2 12L12 17L22 12" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span class="font-heading font-bold text-xl tracking-wider text-white">PALEO<span class="text-tealAccent">LAB</span></span>
+                <span class="font-heading font-bold text-[clamp(1.2rem,2.5vw,1.5rem)] tracking-wider text-white">PALEO<span class="text-tealAccent">LAB</span></span>
             </div>
-            <div class="hidden md:flex gap-8 font-mono text-sm tracking-widest text-gray-400">
-                <a href="#hero" class="hover:text-tealAccent transition-colors">EXPLORE</a>
-                <a href="#database" class="hover:text-tealAccent transition-colors">DATABASE</a>
-                <a href="#about" class="hover:text-tealAccent transition-colors">ABOUT</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 font-mono text-[clamp(0.75rem,1.5vw,0.875rem)] tracking-widest text-gray-400">
+                <a href="#hero" class="hover:text-tealAccent transition-colors flex items-center min-h-[44px]">EXPLORE</a>
+                <a href="#database" class="hover:text-tealAccent transition-colors flex items-center min-h-[44px]">DATABASE</a>
+                <a href="#about" class="hover:text-tealAccent transition-colors flex items-center min-h-[44px]">ABOUT</a>
             </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden text-tealAccent min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-glassBorder flex flex-col items-center py-4 font-mono text-sm tracking-widest text-gray-400">
+            <a href="#hero" class="hover:text-tealAccent w-full text-center py-3 min-h-[44px]">EXPLORE</a>
+            <a href="#database" class="hover:text-tealAccent w-full text-center py-3 min-h-[44px]">DATABASE</a>
+            <a href="#about" class="hover:text-tealAccent w-full text-center py-3 min-h-[44px]">ABOUT</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 px-6 min-h-[70vh] flex flex-col justify-center items-center text-center overflow-hidden">
+    <section id="hero" class="relative pt-32 pb-20 px-4 md:px-6 min-h-[70vh] flex flex-col justify-center items-center text-center overflow-hidden">
         <!-- Parallax Silhouette Placeholder -->
         <div class="absolute inset-0 z-0 flex items-center justify-center opacity-10 pointer-events-none" id="hero-parallax">
-            <svg viewBox="0 0 24 24" class="w-[80vw] max-w-[800px] text-tealAccent" fill="currentColor">
-                <!-- Very simple generic shape representing a massive dino footprint or eye as abstract art -->
+            <svg viewBox="0 0 24 24" class="w-[90vw] max-w-[800px] text-tealAccent" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
             </svg>
         </div>
         
         <div class="z-10" data-aos="fade-up" data-aos-duration="1000">
-            <p class="font-mono text-tealAccent tracking-[0.3em] text-sm mb-4">SYSTEM ONLINE // TERMINAL: ALPHA</p>
-            <h1 class="font-heading font-extrabold text-5xl md:text-7xl text-white mb-6 leading-tight">
+            <p class="font-mono text-tealAccent tracking-[0.3em] text-[clamp(0.6rem,2vw,0.875rem)] mb-4">SYSTEM ONLINE // TERMINAL: ALPHA</p>
+            <h1 class="font-heading font-extrabold text-[clamp(2.5rem,6vw,4.5rem)] text-white mb-6 leading-tight">
                 PREHISTORIC ANATOMY <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-tealAccent to-blue-500">DIGITAL ARCHIVE</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-10">Accessing high-fidelity biometric data and physiological reconstructions of 100 extinct species.</p>
+            <p class="max-w-2xl mx-auto text-[clamp(1rem,2.5vw,1.125rem)] text-gray-400 mb-10 px-2">Accessing high-fidelity biometric data and physiological reconstructions of 100 extinct species.</p>
             
-            <a href="#database" class="inline-flex items-center gap-2 border border-tealAccent text-tealAccent px-8 py-3 rounded-sm font-mono text-sm hover:bg-tealAccent hover:text-darkBase transition-all duration-300">
+            <a href="#database" class="inline-flex items-center justify-center gap-2 border border-tealAccent text-tealAccent px-8 py-3 rounded-sm font-mono text-[clamp(0.75rem,2vw,0.875rem)] hover:bg-tealAccent hover:text-darkBase transition-all duration-300 min-h-[44px]">
                 INITIALIZE SCAN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </a>
         </div>
     </section>
 
     <!-- Lab Interface / Database -->
-    <section id="database" class="px-6 py-12 max-w-[1400px] mx-auto w-full z-10 flex-grow">
+    <section id="database" class="px-4 md:px-6 py-12 max-w-[1400px] mx-auto w-full z-10 flex-grow">
         
         <!-- Search Area -->
-        <div class="mb-8" data-aos="fade-up">
-            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 relative">
+        <div class="mb-8 relative z-50" data-aos="fade-up">
+            <div class="glass-panel p-2 md:p-4 rounded-lg flex items-center gap-2 md:gap-4 relative">
                 <svg class="w-6 h-6 text-tealAccent ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input type="text" id="dino-search" placeholder="Search specimen database..." class="bg-transparent border-none outline-none text-white font-mono w-full text-lg placeholder-gray-600" autocomplete="off">
-                <span class="font-mono text-xs text-gray-500 mr-2" id="db-count">100 RECORDS</span>
+                <input type="text" id="dino-search" placeholder="Search database..." class="bg-transparent border-none outline-none text-white font-mono w-full text-[clamp(1rem,2vw,1.125rem)] placeholder-gray-600 min-h-[44px]" autocomplete="off">
+                <span class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 mr-2 whitespace-nowrap" id="db-count">100 RECORDS</span>
                 
                 <!-- Search Results Dropdown -->
-                <div id="search-results" class="absolute top-full left-0 w-full mt-2 glass-panel rounded-lg max-h-[300px] overflow-y-auto hidden z-50 border border-glassBorder shadow-2xl custom-scrollbar">
+                <div id="search-results" class="absolute top-full left-0 w-full mt-2 glass-panel rounded-lg max-h-60 overflow-y-auto hidden z-50 border border-glassBorder shadow-2xl custom-scrollbar">
                     <!-- JS Injected Results -->
                 </div>
             </div>
         </div>
 
-        <!-- Main Lab Layout (Grid) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Lab Layout (Grid: Mobile 1 Col, Desktop 2 Cols) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             
-            <!-- Left Panel: Wikipedia Data & Info -->
-            <div class="lg:col-span-1 flex flex-col gap-6" data-aos="fade-right">
-                <div class="glass-panel p-6 rounded-lg h-full flex flex-col border border-glassBorder relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tealAccent to-transparent"></div>
-                    
-                    <div class="mb-4">
-                        <span class="font-mono text-xs text-tealAccent tracking-widest uppercase mb-1 block" id="dino-category">THEROPODA</span>
-                        <h2 class="font-heading font-bold text-3xl text-white mb-2" id="dino-name">Tyrannosaurus rex</h2>
-                    </div>
-
-                    <div class="wiki-img-container h-[200px] rounded-lg bg-darkBase/50 border border-glassBorder/50 flex items-center justify-center p-4 mb-6 relative group-hover:border-tealAccent/30 transition-colors">
-                        <div id="dino-loading" class="text-tealAccent font-mono text-sm animate-pulse">ANALYZING IMAGE DATA...</div>
-                        <img id="dino-img" src="" alt="Dinosaur" class="max-w-full max-h-full object-contain mix-blend-screen hidden filter contrast-125 saturate-0 sepia-[.3] hue-rotate-[180deg]" />
-                        <div id="dino-fallback" class="hidden text-gray-600 font-mono text-xs text-center border border-dashed border-gray-600 p-4 w-full">NO VISUAL DATA<br>AVAILABLE IN ARCHIVE</div>
-                        <!-- Tech overlay corners -->
-                        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-tealAccent/50"></div>
-                        <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-tealAccent/50"></div>
-                        <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-tealAccent/50"></div>
-                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-tealAccent/50"></div>
-                    </div>
-
-                    <div class="font-mono text-sm text-gray-400 leading-relaxed custom-scrollbar overflow-y-auto flex-grow" id="dino-extract">
-                        Select a specimen from the database to load archival records.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Middle/Right Panel: Specimen Viewer & Biometrics -->
-            <div class="lg:col-span-2 flex flex-col gap-6" data-aos="fade-left">
-                
-                <!-- Specimen Viewer -->
-                <div class="glass-panel rounded-lg border border-glassBorder p-6 h-[400px] relative flex flex-col">
+            <!-- Left Panel (Top on Mobile): Specimen Viewer -->
+            <div class="flex flex-col gap-6" data-aos="fade-right">
+                <div class="glass-panel rounded-lg border border-glassBorder p-4 md:p-6 h-[40vh] md:h-[500px] relative flex flex-col">
                     <div class="flex justify-between items-center mb-4">
-                        <div class="font-mono text-xs text-gray-500 tracking-widest"><span class="text-amberAccent">●</span> HOLOGRAM VIEWER</div>
-                        <div class="font-mono text-xs text-tealAccent" id="scale-indicator">SCALE: 1.8M HUMAN REFERENCE</div>
+                        <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 tracking-widest"><span class="text-amberAccent">●</span> HOLOGRAM VIEWER</div>
+                        <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-tealAccent" id="scale-indicator">SCALE: 1.8M HUMAN</div>
                     </div>
                     
                     <div class="relative flex-grow border border-glassBorder/30 rounded bg-[#0A0F1A] overflow-hidden" id="viewer-container">
@@ -176,33 +162,60 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Right Panel (Bottom on Mobile): Info & Stats -->
+            <div class="flex flex-col gap-6" data-aos="fade-left">
+                <!-- Wikipedia Card -->
+                <div class="glass-panel p-6 rounded-lg flex flex-col border border-glassBorder relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tealAccent to-transparent"></div>
+                    
+                    <div class="mb-4">
+                        <span class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-tealAccent tracking-widest uppercase mb-1 block" id="dino-category">THEROPODA</span>
+                        <h2 class="font-heading font-bold text-[clamp(1.5rem,3vw,2rem)] text-white mb-2" id="dino-name">Tyrannosaurus rex</h2>
+                    </div>
+
+                    <div class="wiki-img-container h-[200px] md:h-[250px] rounded-lg bg-[#0F0F0F]/50 border border-glassBorder/50 flex items-center justify-center p-4 mb-6 relative group-hover:border-tealAccent/30 transition-colors">
+                        <div id="dino-loading" class="text-tealAccent font-mono text-[clamp(0.7rem,1.5vw,0.875rem)] animate-pulse">ANALYZING IMAGE DATA...</div>
+                        <img id="dino-img" src="" alt="Dinosaur" class="max-w-full max-h-full object-contain mix-blend-screen hidden filter contrast-125 saturate-0 sepia-[.3] hue-rotate-[180deg]" />
+                        <div id="dino-fallback" class="hidden text-gray-600 font-mono text-xs text-center border border-dashed border-gray-600 p-4 w-full">NO VISUAL DATA<br>AVAILABLE IN ARCHIVE</div>
+                        <!-- Tech overlay corners -->
+                        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-tealAccent/50"></div>
+                        <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-tealAccent/50"></div>
+                        <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-tealAccent/50"></div>
+                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-tealAccent/50"></div>
+                    </div>
+
+                    <div class="font-mono text-[clamp(0.75rem,1.5vw,0.875rem)] text-gray-400 leading-relaxed custom-scrollbar overflow-y-auto max-h-[200px]" id="dino-extract">
+                        Select a specimen from the database to load archival records.
+                    </div>
+                </div>
 
                 <!-- Biometric Data Panel -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    
                     <!-- Stat 1: Length -->
                     <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-tealAccent">
-                        <div class="font-mono text-xs text-gray-500 mb-1">LENGTH (M)</div>
-                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-length">0.0</div>
-                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                        <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 mb-1">LENGTH (M)</div>
+                        <div class="font-heading font-bold text-[clamp(1.2rem,2.5vw,1.5rem)] text-white mb-2" id="stat-length">0.0</div>
+                        <div class="w-full bg-[#0F0F0F] h-1.5 rounded-full overflow-hidden">
                             <div class="bg-tealAccent h-full transition-all duration-1000" id="bar-length" style="width: 0%"></div>
                         </div>
                     </div>
 
                     <!-- Stat 2: Height -->
                     <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-tealAccent">
-                        <div class="font-mono text-xs text-gray-500 mb-1">HEIGHT (M)</div>
-                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-height">0.0</div>
-                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                        <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 mb-1">HEIGHT (M)</div>
+                        <div class="font-heading font-bold text-[clamp(1.2rem,2.5vw,1.5rem)] text-white mb-2" id="stat-height">0.0</div>
+                        <div class="w-full bg-[#0F0F0F] h-1.5 rounded-full overflow-hidden">
                             <div class="bg-tealAccent h-full transition-all duration-1000" id="bar-height" style="width: 0%"></div>
                         </div>
                     </div>
 
                     <!-- Stat 3: Weight -->
                     <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-amberAccent">
-                        <div class="font-mono text-xs text-gray-500 mb-1">EST. MASS (KG)</div>
-                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-weight">0</div>
-                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                        <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 mb-1">EST. MASS (KG)</div>
+                        <div class="font-heading font-bold text-[clamp(1.2rem,2.5vw,1.5rem)] text-white mb-2" id="stat-weight">0</div>
+                        <div class="w-full bg-[#0F0F0F] h-1.5 rounded-full overflow-hidden">
                             <div class="bg-amberAccent h-full transition-all duration-1000" id="bar-weight" style="width: 0%"></div>
                         </div>
                     </div>
@@ -210,12 +223,11 @@
                     <!-- Stat 4: Speed / Era -->
                     <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-amberAccent flex flex-col justify-between">
                         <div>
-                            <div class="font-mono text-xs text-gray-500 mb-1">ERA / DIET</div>
-                            <div class="font-mono text-sm text-white mb-1 truncate" id="stat-era">-</div>
-                            <div class="font-mono text-sm text-tealAccent truncate" id="stat-diet">-</div>
+                            <div class="font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-500 mb-1">ERA / DIET</div>
+                            <div class="font-mono text-[clamp(0.7rem,1.5vw,0.875rem)] text-white mb-1 truncate" id="stat-era">-</div>
+                            <div class="font-mono text-[clamp(0.7rem,1.5vw,0.875rem)] text-tealAccent truncate" id="stat-diet">-</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -223,8 +235,8 @@
 
     <!-- Footer -->
     <footer id="about" class="mt-auto py-6 border-t border-glassBorder/30 relative z-10 glass-panel mt-12">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center font-mono text-xs text-gray-600">
-            <div>&copy; <span id="year"></span> PALEO LAB RESEARCH INITIATIVE. ALL RIGHTS RESERVED.</div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center font-mono text-[clamp(0.6rem,1.5vw,0.75rem)] text-gray-600 gap-2">
+            <div class="text-center md:text-left">&copy; <span id="year"></span> PALEO LAB RESEARCH INITIATIVE.</div>
             <div>VER 2.0.4 // SECURE CONNECTION</div>
         </div>
     </footer>
