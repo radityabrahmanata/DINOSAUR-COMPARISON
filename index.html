@@ -1,101 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinosaur vs Human Size Comparison</title>
-    <meta name="description" content="An interactive web application to compare the size of 100 different dinosaurs against a human.">
-    <!-- Google Fonts: Inter for minimalist, modern look -->
+    <title>Dinosaur Paleontology Lab</title>
+    <meta name="description" content="Prehistoric Anatomy: Digital Archiving Project - High-End Research Facility">
+    
+    <!-- Google Fonts: Montserrat (Headers) & JetBrains Mono (Data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS CSS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#121212',
+                        darkSurface: '#1E1E1E',
+                        tealAccent: '#00E5FF',
+                        amberAccent: '#FFAB00',
+                        glassBg: 'rgba(30, 30, 30, 0.6)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="app-container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="header-content">
-                <h1>Dinosaur vs Human</h1>
-                <p>Select a dinosaur to compare its size with an average human (1.8m).</p>
+<body class="bg-darkBase text-gray-300 font-sans min-h-screen flex flex-col relative overflow-x-hidden scanline-bg">
+    
+    <!-- Background Grid -->
+    <div class="fixed inset-0 pointer-events-none bg-grid-pattern bg-[length:40px_40px] z-[-1] opacity-50"></div>
+
+    <!-- Sticky Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-glassBorder transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- SVG Logo Placeholder -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-heading font-bold text-xl tracking-wider text-white">PALEO<span class="text-tealAccent">LAB</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 font-mono text-sm tracking-widest text-gray-400">
+                <a href="#hero" class="hover:text-tealAccent transition-colors">EXPLORE</a>
+                <a href="#database" class="hover:text-tealAccent transition-colors">DATABASE</a>
+                <a href="#about" class="hover:text-tealAccent transition-colors">ABOUT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 px-6 min-h-[70vh] flex flex-col justify-center items-center text-center overflow-hidden">
+        <!-- Parallax Silhouette Placeholder -->
+        <div class="absolute inset-0 z-0 flex items-center justify-center opacity-10 pointer-events-none" id="hero-parallax">
+            <svg viewBox="0 0 24 24" class="w-[80vw] max-w-[800px] text-tealAccent" fill="currentColor">
+                <!-- Very simple generic shape representing a massive dino footprint or eye as abstract art -->
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+        </div>
+        
+        <div class="z-10" data-aos="fade-up" data-aos-duration="1000">
+            <p class="font-mono text-tealAccent tracking-[0.3em] text-sm mb-4">SYSTEM ONLINE // TERMINAL: ALPHA</p>
+            <h1 class="font-heading font-extrabold text-5xl md:text-7xl text-white mb-6 leading-tight">
+                PREHISTORIC ANATOMY <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-tealAccent to-blue-500">DIGITAL ARCHIVE</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-10">Accessing high-fidelity biometric data and physiological reconstructions of 100 extinct species.</p>
+            
+            <a href="#database" class="inline-flex items-center gap-2 border border-tealAccent text-tealAccent px-8 py-3 rounded-sm font-mono text-sm hover:bg-tealAccent hover:text-darkBase transition-all duration-300">
+                INITIALIZE SCAN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Lab Interface / Database -->
+    <section id="database" class="px-6 py-12 max-w-[1400px] mx-auto w-full z-10 flex-grow">
+        
+        <!-- Search Area -->
+        <div class="mb-8" data-aos="fade-up">
+            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 relative">
+                <svg class="w-6 h-6 text-tealAccent ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" id="dino-search" placeholder="Search specimen database..." class="bg-transparent border-none outline-none text-white font-mono w-full text-lg placeholder-gray-600" autocomplete="off">
+                <span class="font-mono text-xs text-gray-500 mr-2" id="db-count">100 RECORDS</span>
                 
-                <div class="controls">
-                    <div class="custom-select-wrapper">
-                        <select id="dino-select" class="dino-select">
-                            <option value="" disabled selected>Select a dinosaur...</option>
-                            <!-- Options will be populated by JS -->
-                        </select>
-                        <div class="select-icon">
-                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                <!-- Search Results Dropdown -->
+                <div id="search-results" class="absolute top-full left-0 w-full mt-2 glass-panel rounded-lg max-h-[300px] overflow-y-auto hidden z-50 border border-glassBorder shadow-2xl custom-scrollbar">
+                    <!-- JS Injected Results -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Lab Layout (Grid) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Panel: Wikipedia Data & Info -->
+            <div class="lg:col-span-1 flex flex-col gap-6" data-aos="fade-right">
+                <div class="glass-panel p-6 rounded-lg h-full flex flex-col border border-glassBorder relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tealAccent to-transparent"></div>
+                    
+                    <div class="mb-4">
+                        <span class="font-mono text-xs text-tealAccent tracking-widest uppercase mb-1 block" id="dino-category">THEROPODA</span>
+                        <h2 class="font-heading font-bold text-3xl text-white mb-2" id="dino-name">Tyrannosaurus rex</h2>
+                    </div>
+
+                    <div class="wiki-img-container h-[200px] rounded-lg bg-darkBase/50 border border-glassBorder/50 flex items-center justify-center p-4 mb-6 relative group-hover:border-tealAccent/30 transition-colors">
+                        <div id="dino-loading" class="text-tealAccent font-mono text-sm animate-pulse">ANALYZING IMAGE DATA...</div>
+                        <img id="dino-img" src="" alt="Dinosaur" class="max-w-full max-h-full object-contain mix-blend-screen hidden filter contrast-125 saturate-0 sepia-[.3] hue-rotate-[180deg]" />
+                        <div id="dino-fallback" class="hidden text-gray-600 font-mono text-xs text-center border border-dashed border-gray-600 p-4 w-full">NO VISUAL DATA<br>AVAILABLE IN ARCHIVE</div>
+                        <!-- Tech overlay corners -->
+                        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-tealAccent/50"></div>
+                        <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-tealAccent/50"></div>
+                        <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-tealAccent/50"></div>
+                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-tealAccent/50"></div>
+                    </div>
+
+                    <div class="font-mono text-sm text-gray-400 leading-relaxed custom-scrollbar overflow-y-auto flex-grow" id="dino-extract">
+                        Select a specimen from the database to load archival records.
                     </div>
                 </div>
             </div>
-        </header>
 
-        <div class="main-content">
-            <!-- Left: Visualization Section -->
-            <main class="visualization-area">
-                <div class="grid-container" id="grid-container">
-                    <!-- Ruler Axes -->
-                    <div class="y-axis" id="y-axis"></div>
-                    <div class="x-axis" id="x-axis"></div>
-                    
-                    <!-- Visualization Canvas -->
-                    <div class="canvas" id="canvas">
-                        <!-- Human silhouette -->
-                        <div class="human" id="human" title="Human (1.8m)">
-                            <svg viewBox="0 0 100 250" preserveAspectRatio="xMidYMax meet">
-                                <path d="M50 0 C63.8 0 75 11.2 75 25 C75 38.8 63.8 50 50 50 C36.2 50 25 38.8 25 25 C25 11.2 36.2 0 50 0 Z M30 60 C13.4 60 0 73.4 0 90 L0 150 C0 155.5 4.5 160 10 160 C15.5 160 20 155.5 20 150 L20 100 L25 100 L25 240 C25 245.5 29.5 250 35 250 C40.5 250 45 245.5 45 240 L45 150 L55 150 L55 240 C55 245.5 59.5 250 65 250 C70.5 250 75 245.5 75 240 L75 100 L80 100 L80 150 C80 155.5 84.5 160 90 160 C95.5 160 100 155.5 100 150 L100 90 C100 73.4 86.6 60 70 60 L30 60 Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        
-                        <!-- Dinosaur Category Silhouette -->
-                        <div class="dinosaur hidden" id="dinosaur">
-                            <div id="dino-svg-container" class="dino-svg-container">
-                                <!-- Category SVG will be injected here -->
-                            </div>
-                            <div class="dino-label" id="dino-visual-label">Dino</div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <!-- Right: Info Panel -->
-            <aside class="info-panel hidden" id="info-panel">
-                <div class="info-header">
-                    <h2 id="dino-name">Name</h2>
-                    <span id="dino-category" class="dino-category-badge">Kategori</span>
-                </div>
+            <!-- Middle/Right Panel: Specimen Viewer & Biometrics -->
+            <div class="lg:col-span-2 flex flex-col gap-6" data-aos="fade-left">
                 
-                <div class="stats">
-                    <div class="stat-box">
-                        <span class="stat-label">Length</span>
-                        <span id="dino-length" class="stat-value">0m</span>
+                <!-- Specimen Viewer -->
+                <div class="glass-panel rounded-lg border border-glassBorder p-6 h-[400px] relative flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="font-mono text-xs text-gray-500 tracking-widest"><span class="text-amberAccent">●</span> HOLOGRAM VIEWER</div>
+                        <div class="font-mono text-xs text-tealAccent" id="scale-indicator">SCALE: 1.8M HUMAN REFERENCE</div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-label">Height</span>
-                        <span id="dino-height" class="stat-value">0m</span>
+                    
+                    <div class="relative flex-grow border border-glassBorder/30 rounded bg-[#0A0F1A] overflow-hidden" id="viewer-container">
+                        <!-- Grid overlay -->
+                        <div class="absolute inset-0 bg-grid-pattern bg-[length:20px_20px] opacity-20 pointer-events-none"></div>
+                        
+                        <!-- Axes -->
+                        <div class="absolute left-[10%] top-[10%] bottom-[15%] w-[1px] bg-tealAccent/30" id="y-axis"></div>
+                        <div class="absolute left-[10%] bottom-[15%] right-[5%] h-[1px] bg-tealAccent/30" id="x-axis"></div>
+
+                        <div class="canvas relative w-full h-full" id="canvas">
+                            <!-- Human silhouette -->
+                            <div class="absolute bottom-[15%] left-[10%] text-amberAccent/80 origin-bottom" id="human" style="width: 20px;">
+                                <svg viewBox="0 0 100 250" preserveAspectRatio="xMidYMax meet">
+                                    <path d="M50 0 C63.8 0 75 11.2 75 25 C75 38.8 63.8 50 50 50 C36.2 50 25 38.8 25 25 C25 11.2 36.2 0 50 0 Z M30 60 C13.4 60 0 73.4 0 90 L0 150 C0 155.5 4.5 160 10 160 C15.5 160 20 155.5 20 150 L20 100 L25 100 L25 240 C25 245.5 29.5 250 35 250 C40.5 250 45 245.5 45 240 L45 150 L55 150 L55 240 C55 245.5 59.5 250 65 250 C70.5 250 75 245.5 75 240 L75 100 L80 100 L80 150 C80 155.5 84.5 160 90 160 C95.5 160 100 155.5 100 150 L100 90 C100 73.4 86.6 60 70 60 L30 60 Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            
+                            <!-- Dinosaur Silhouette -->
+                            <div class="absolute bottom-[15%] left-[10%] text-tealAccent origin-bottom transition-all duration-700 ease-out hidden" id="dinosaur">
+                                <div id="dino-svg-container" class="w-full h-full drop-shadow-[0_0_8px_rgba(0,229,255,0.5)]">
+                                    <!-- SVG injected here -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="wiki-illustration-box">
-                    <div id="dino-loading" class="dino-loading hidden">Loading...</div>
-                    <img id="dino-img" src="" alt="Wikipedia Reference" class="dino-img hidden" />
-                    <div id="dino-fallback" class="dino-fallback hidden">
-                        <span class="fallback-text">Ilustrasi Tidak Tersedia</span>
+                <!-- Biometric Data Panel -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <!-- Stat 1: Length -->
+                    <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-tealAccent">
+                        <div class="font-mono text-xs text-gray-500 mb-1">LENGTH (M)</div>
+                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-length">0.0</div>
+                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-tealAccent h-full transition-all duration-1000" id="bar-length" style="width: 0%"></div>
+                        </div>
                     </div>
-                </div>
 
-                <p id="dino-extract" class="dino-extract">Loading details...</p>
-            </aside>
+                    <!-- Stat 2: Height -->
+                    <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-tealAccent">
+                        <div class="font-mono text-xs text-gray-500 mb-1">HEIGHT (M)</div>
+                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-height">0.0</div>
+                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-tealAccent h-full transition-all duration-1000" id="bar-height" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 3: Weight -->
+                    <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-amberAccent">
+                        <div class="font-mono text-xs text-gray-500 mb-1">EST. MASS (KG)</div>
+                        <div class="font-heading font-bold text-2xl text-white mb-2" id="stat-weight">0</div>
+                        <div class="w-full bg-darkBase h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-amberAccent h-full transition-all duration-1000" id="bar-weight" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 4: Speed / Era -->
+                    <div class="glass-panel p-4 rounded-lg border border-glassBorder border-t-2 border-t-amberAccent flex flex-col justify-between">
+                        <div>
+                            <div class="font-mono text-xs text-gray-500 mb-1">ERA / DIET</div>
+                            <div class="font-mono text-sm text-white mb-1 truncate" id="stat-era">-</div>
+                            <div class="font-mono text-sm text-tealAccent truncate" id="stat-diet">-</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="mt-auto py-6 border-t border-glassBorder/30 relative z-10 glass-panel mt-12">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center font-mono text-xs text-gray-600">
+            <div>&copy; <span id="year"></span> PALEO LAB RESEARCH INITIATIVE. ALL RIGHTS RESERVED.</div>
+            <div>VER 2.0.4 // SECURE CONNECTION</div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
