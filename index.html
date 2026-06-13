@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinosaur vs Human Size Comparison</title>
+    <meta name="description" content="An interactive web application to compare the size of 100 different dinosaurs against a human.">
+    <!-- Google Fonts: Inter for minimalist, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Dinosaur vs Human</h1>
+                <p>Select a dinosaur to compare its size with an average human (1.8m).</p>
+                
+                <div class="controls">
+                    <div class="custom-select-wrapper">
+                        <select id="dino-select" class="dino-select">
+                            <option value="" disabled selected>Select a dinosaur...</option>
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <div class="select-icon">
+                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left: Visualization Section -->
+            <main class="visualization-area">
+                <div class="grid-container" id="grid-container">
+                    <!-- Ruler Axes -->
+                    <div class="y-axis" id="y-axis"></div>
+                    <div class="x-axis" id="x-axis"></div>
+                    
+                    <!-- Visualization Canvas -->
+                    <div class="canvas" id="canvas">
+                        <!-- Human silhouette -->
+                        <div class="human" id="human" title="Human (1.8m)">
+                            <svg viewBox="0 0 100 250" preserveAspectRatio="xMidYMax meet">
+                                <path d="M50 0 C63.8 0 75 11.2 75 25 C75 38.8 63.8 50 50 50 C36.2 50 25 38.8 25 25 C25 11.2 36.2 0 50 0 Z M30 60 C13.4 60 0 73.4 0 90 L0 150 C0 155.5 4.5 160 10 160 C15.5 160 20 155.5 20 150 L20 100 L25 100 L25 240 C25 245.5 29.5 250 35 250 C40.5 250 45 245.5 45 240 L45 150 L55 150 L55 240 C55 245.5 59.5 250 65 250 C70.5 250 75 245.5 75 240 L75 100 L80 100 L80 150 C80 155.5 84.5 160 90 160 C95.5 160 100 155.5 100 150 L100 90 C100 73.4 86.6 60 70 60 L30 60 Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Dinosaur Category Silhouette -->
+                        <div class="dinosaur hidden" id="dinosaur">
+                            <div id="dino-svg-container" class="dino-svg-container">
+                                <!-- Category SVG will be injected here -->
+                            </div>
+                            <div class="dino-label" id="dino-visual-label">Dino</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right: Info Panel -->
+            <aside class="info-panel hidden" id="info-panel">
+                <div class="info-header">
+                    <h2 id="dino-name">Name</h2>
+                    <span id="dino-category" class="dino-category-badge">Kategori</span>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="stat-label">Length</span>
+                        <span id="dino-length" class="stat-value">0m</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Height</span>
+                        <span id="dino-height" class="stat-value">0m</span>
+                    </div>
+                </div>
+
+                <div class="wiki-illustration-box">
+                    <div id="dino-loading" class="dino-loading hidden">Loading...</div>
+                    <img id="dino-img" src="" alt="Wikipedia Reference" class="dino-img hidden" />
+                    <div id="dino-fallback" class="dino-fallback hidden">
+                        <span class="fallback-text">Ilustrasi Tidak Tersedia</span>
+                    </div>
+                </div>
+
+                <p id="dino-extract" class="dino-extract">Loading details...</p>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
